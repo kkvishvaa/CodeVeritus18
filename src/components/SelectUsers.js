@@ -1,21 +1,19 @@
 // src/SelectUsersPage.js
-
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
 import Navbar from "./Navbar";
+import axios from "axios"; // Import axios
 
 const SelectUsersPage = () => {
   const [numUsers, setNumUsers] = useState(1);
-  const [codeInputs, setCodeInputs] = useState([""]); // Initial empty input for the first user
+  const [codeInputs, setCodeInputs] = useState([""]);
+  const navigate = useNavigate(); // Use useNavigate for navigation
 
   const handleUserChange = (event) => {
     const count = parseInt(event.target.value);
     setNumUsers(count);
-
-    // Update the codeInputs state based on the selected number of users
-    const updatedInputs = Array(count).fill("");
-    setCodeInputs(updatedInputs);
+    setCodeInputs(Array(count).fill(""));
   };
 
   const handleCodeChange = (index, event) => {
@@ -24,9 +22,20 @@ const SelectUsersPage = () => {
     setCodeInputs(updatedInputs);
   };
 
+  const handleSubmit = async () => {
+    try {
+      // Send user codes to the backend
+      await axios.post('http://localhost:5000/api/user-codes', { codes: codeInputs });
+      // Navigate to Results page after submission
+      navigate('/results');
+    } catch (error) {
+      console.error('Error submitting codes:', error);
+    }
+  };
+
   return (
     <div>
-      <Navbar/>
+      <Navbar />
       <div className="container py-3 my-5">
         <h2 className="text-center mb-2">Code Entry Portal</h2>
         <p className="tagline text-center">"Empowering Your Coding Journey!"</p>
@@ -62,7 +71,7 @@ const SelectUsersPage = () => {
         ))}
 
         {/* Next Button */}
-        <Link to="/results" className="btn btn-primary">Next</Link>
+        <button onClick={handleSubmit} className="btn btn-primary">Next</button>
       </div>
     </div>
   );
