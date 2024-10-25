@@ -1,22 +1,26 @@
-// src/App.js
+
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './components/Home';
-import SelectUsers from './components/SelectUsers';
-import Results from './components/Results';
-import LoginPage from './components/Login';
+import Home from './pages/Home/Home';
+import Login from './pages/Login/Login';
+import CompanyInfo from './pages/CompanyInfo/CompanyInfo';
+import SelectUsersPage from './pages/Usercode/SelectUsers';
+import ResultsPage from './pages/Results/Results';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
- // Create this file to import custom styles if needed
+ 
 
 const App = () => {
   return (
    
     <Router>
       <Routes>
-      <Route path="/" element={<LoginPage />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/selectusers" element={<SelectUsers />} />
-        <Route path="/results" element={<Results />} />
+      
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/companyinfo" element={<CompanyInfo />} />
+        <Route path="/selectusers" element={<SelectUsersPage />} />
+        <Route path="/results" element={<ResultsPage />} />
       </Routes>
     </Router>
   );
