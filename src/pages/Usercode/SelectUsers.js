@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 import "./SelectUsers.css";
 
-const SelectUsersPage = ({ videoSrc }) => {
+const SelectUsersPage = ({ videoSrc, currentUser }) => { // Add currentUser as prop
   const [codeInput, setCodeInput] = useState("");
   const [submittedCode, setSubmittedCode] = useState(null); 
   const [errorMessage, setErrorMessage] = useState(""); 
@@ -18,9 +18,15 @@ const SelectUsersPage = ({ videoSrc }) => {
   };
 
   const handleSubmit = async () => {
+    const username = localStorage.getItem('username'); // Retrieve the username from local storage
+
+    if (!username) {
+      setErrorMessage("You must be logged in to submit code.");
+      return;
+    }
     try {
       const userCode = {
-        userId: "user1",
+        userId: username, // Save the code under the logged-in user's username
         codes: [codeInput],
       };
 
@@ -40,7 +46,6 @@ const SelectUsersPage = ({ videoSrc }) => {
         <h1 className="title animate-slide-down">Code Entry Portal</h1>
         <Video videoSrc="184815-874271897_medium.mp4" />
 
-        
         <Typed
           className="tagline animate-typed"
           strings={["Empowering Your Coding Journey!"]}
@@ -49,47 +54,33 @@ const SelectUsersPage = ({ videoSrc }) => {
           loop={false}
         />
 
-       
-        <div className="input-area">
-          <label htmlFor="codeInput" className="form-label">
-            Code Input:
-          </label>
+        <div className="code-entry">
           <textarea
-            id="codeInput"
             className="form-control"
-            rows="5"
             value={codeInput}
             onChange={handleCodeChange}
-            placeholder="Type your code here..."
-            required
+            placeholder="Enter your code here..."
+            rows="5"
           />
-        </div>
+          <button className="btn btn-primary" onClick={handleSubmit}>Submit Code</button>
 
-        <button
-          onClick={handleSubmit}
-          className="btn btn-primary submit-btn"
-        >
-          Submit
-        </button>
-
-        
-        {errorMessage && (
-          <p className="mt-3 text-danger">{errorMessage}</p>
-        )}
-
-       
-        {submittedCode && (
+          {submittedCode && (
           <div className="mt-4 p-3 bg-light text-dark rounded">
             <h5>Submitted Code:</h5>
             <pre className="submitted-code">{submittedCode}</pre>
           </div>
         )}
-           <div className="text-center mt-4">
-          <Link to="/" className="submit-btn">
-            <FaArrowLeft  className="me-2" /> Go Back
+
+          {errorMessage && (
+            <div className="alert alert-danger mt-3">{errorMessage}</div>
+          )}
+        </div>
+
+        <div className="text-center mt-4">
+          <Link to="/" className="btn btn-primary back-button">
+            <FaArrowLeft className="me-2" /> Go Back
           </Link>
         </div>
-        
       </div>
     </div>
   );

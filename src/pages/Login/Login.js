@@ -32,6 +32,8 @@ const Login = ({videoSrc}) => {
       });
 
       if (response.status === 200) {
+        // Save the username to localStorage
+        localStorage.setItem('username', credentials.username);
         activeTab === 'user' ? navigate('/companyinfo') : navigate('/results');
       }
     } catch (error) {

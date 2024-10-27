@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { FaArrowLeft } from "react-icons/fa"; 
 import "./Results.css"; 
+
 const ResultsPage = () => {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -38,9 +39,8 @@ const ResultsPage = () => {
 
   return (
     <div className="results-page">
-      
       <div className="container py-5 my-5 animate__animated animate__fadeIn">
-        <h2 className="page-title text-center">Code Submitted by the User</h2>
+        <h2 className="page-title text-center">Code Submitted by Users</h2>
         <p className="text-center subtitle">
           Review the predictions generated from user code submissions below.
         </p>
@@ -50,10 +50,10 @@ const ResultsPage = () => {
             results.map((result, index) => (
               <div key={index} className="result-card animate__animated animate__fadeInUp">
                 <div className="card-header">
-                  <h5>Submission {index + 1}</h5>
+                  <h5>Submitted by: {result.userId}</h5>
                 </div>
                 <div className="card-body">
-                  <pre className="code-block">{result.codes}</pre>
+                  <pre className="code-block">{result.codes.join('\n')}</pre>
                   <p className="prediction-text">
                     <strong>Prediction:</strong> {result.prediction}
                   </p>
