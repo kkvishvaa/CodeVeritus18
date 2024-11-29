@@ -209,3 +209,55 @@ body {
 }
 
 /* Keyframes for background gradient */
+@media (max-width: 768px) {
+  .login-container {
+    flex-direction: column; /* Stack content on smaller screens */
+    padding: 15px;
+    margin: 50px 10px;
+  }
+
+  .content-section {
+    margin-right: 0; /* Remove margin when stacked */
+    margin-bottom: 20px; /* Add spacing between sections */
+  }
+
+  .form-section {
+    border-left: none; /* Remove border when stacked */
+    border-top: 1px solid #444; /* Add top border for separation */
+  }
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    padding: 10px;
+    margin: 30px 5px;
+  }
+
+  .content-section h2 {
+    font-size: 28px; /* Adjust heading size */
+  }
+
+  .content-section p {
+    font-size: 14px; /* Adjust text size */
+  }
+
+  .form-group input {
+    padding: 10px; /* Reduce padding for input fields */
+  }
+
+  .btn-primary {
+    padding: 12px; /* Adjust button padding */
+  }
+}
+
+/* Keyframes for Fade-In Effect */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

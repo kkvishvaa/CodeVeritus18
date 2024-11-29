@@ -45,7 +45,7 @@ const ResultsPage = () => {
           Review the predictions generated from user code submissions below.
         </p>
 
-        <div className="results-container">
+        {/* <div className="results-container">
           {results.length > 0 ? (
             results.map((result, index) => (
               <div key={index} className="result-card animate__animated animate__fadeInUp">
@@ -65,7 +65,37 @@ const ResultsPage = () => {
               No results to display. Please submit some code for analysis.
             </div>
           )}
+        </div> */}
+            <div className="results-container">
+      {results.length > 0 ? (
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th>Sl No.</th>
+              <th>Username</th>
+              <th>Email ID</th>
+              <th>Submitted Code</th>
+            </tr>
+          </thead>
+          <tbody>
+            {results.map((result, index) => (
+              <tr key={index}>
+                <td>{index + 1}</td>
+                <td>{result.userId}</td>
+                <td>{result.email}</td>
+                <td>
+                  <pre className="code-block">{result.codes.join('\n')}</pre>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <div className="alert alert-warning text-center animate__animated animate__bounceIn">
+          No results to display. Please submit some code for analysis.
         </div>
+      )}
+    </div>
 
         <div className="text-center mt-4">
           <Link to="/" className="btn btn-primary back-button">
