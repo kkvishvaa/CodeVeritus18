@@ -70,7 +70,7 @@ const Login = ({videoSrc}) => {
       <div className="login-container">
         <div className="content-section">
           <h2>Welcome to Our Platform</h2>
-          <p>Join us to explore personalized tools designed to help you detect and prevent code plagiarism.</p>
+          <p>Join us to discover tailored tools crafted to help you ensure code authenticity and prevent dishonesty.</p>
           <p>Log in or sign up to get started and access features that enhance coding integrity and academic success.</p>
           <button onClick={goToHome} className="btn btn-secondary">Back</button>
         </div>

@@ -18,8 +18,8 @@ const WhyChoose = () => {
               className="mb-3" 
               style={{ color: '#e74c3c' }} 
             />
-            <h4>12+ Languages Supported</h4>
-            <p>Including Python, JavaScript, and C++</p>
+            <h4>3 Languages Supported</h4>
+            <p>Python, Java, and C++</p>
           </div>
           <div className="col-md-4 feature-box">
             <FontAwesomeIcon 

@@ -7,7 +7,7 @@ const ResSection = () => {
       Proven Results You Can Count On
     </h2>
     <p className="lead text-center" style={{ color: 'rgb(239, 227, 227)' }}>
-      90% less time spent manually reviewing code. Detects even the most sophisticated plagiarism attempts. Builds a culture of originality and innovation.
+    Save 90% of the time spent manually reviewing code. Our AI-driven platform detect even the most advanced code imitation. Foster a culture of originality and innovation effortlessly.
     </p>
   </div>
   )

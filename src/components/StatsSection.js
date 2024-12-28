@@ -16,7 +16,7 @@ const StatsSection = () => {
         color: 'white',
       }}
     >
-      <h2 className="fw-bold text-center mb-3">The Plagiarism Problem is Real—and Growing</h2>
+      <h2 className="fw-bold text-center mb-3">The Code Authenticity Crisis is Real—and Accelerating</h2>
       <p className="lead text-center">2022-2024 Insights You Can’t Ignore</p>
       <div className="row mt-5" ref={ref}>
         <div className="col-md-4 text-center">
@@ -48,7 +48,7 @@ const StatsSection = () => {
         </div>
       </div>
       <p className="mt-4 text-center text-light">
-        Traditional tools miss cleverly disguised plagiarism. CodeVeritus has your back.
+      Traditional tools fail to catch cleverly concealed Code forgery. CodeVeritus ensures you’re always one step ahead.
       </p>
     </section>
   );
